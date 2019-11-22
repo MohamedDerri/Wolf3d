@@ -6,12 +6,13 @@
 /*   By: slaanani <slaanani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 03:40:39 by mderri            #+#    #+#             */
-/*   Updated: 2019/11/22 21:55:58 by slaanani         ###   ########.fr       */
+/*   Updated: 2019/11/22 22:08:18 by slaanani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
+//ff
 // void	raycaster(t_wolf *w, int **map)
 // {
 // 	int x = 0;
