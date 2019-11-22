@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   vector_operations2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mderri <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: slaanani <slaanani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 03:24:20 by mderri            #+#    #+#             */
-/*   Updated: 2019/11/22 03:24:22 by mderri           ###   ########.fr       */
+/*   Updated: 2019/11/22 21:56:23 by slaanani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void			create_camera(t_wolf *w, char **s, int i)
+void			create_camera(t_wolf *w)
 {
 	t_vecteur	up;
 
@@ -55,18 +55,18 @@ long double		map(long double x, double size, int w)
 	return (x * size / w - (size / 2));
 }
 
-void			make_ray(t_wolf *w)
-{
-	t_vecteur	left;
-	t_vecteur	up;
-	t_vecteur	forward;
-	t_vecteur	sumupleft;
+// void			make_ray(t_wolf *w)
+// {
+// 	t_vecteur	left;
+// 	t_vecteur	up;
+// 	t_vecteur	forward;
+// 	t_vecteur	sumupleft;
 
-	left = kv(w->cam.left, map(w->v1.x, w->cam.frame_width, w->m.w));
-	up = kv(w->cam.up, map(w->v1.y, w->cam.frame_height, w->m.h));
-	forward = kv(w->cam.forward, w->cam.focal_length);
-	sumupleft = sum(up, left);
-	w->ray.direct = sum(sumupleft, forward);
-	w->ray.org = create_v(w->cam.position.x, w->cam.position.y,
-	w->cam.position.z);
-}
+// 	left = kv(w->cam.left, map(w->v1.x, w->cam.frame_width, w->m.w));
+// 	up = kv(w->cam.up, map(w->v1.y, w->cam.frame_height, w->m.h));
+// 	forward = kv(w->cam.forward, w->cam.focal_length);
+// 	sumupleft = sum(up, left);
+// 	w->ray.direct = sum(sumupleft, forward);
+// 	w->ray.org = create_v(w->cam.position.x, w->cam.position.y,
+// 	w->cam.position.z);
+// }

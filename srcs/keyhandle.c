@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyhandle.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mderri <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: slaanani <slaanani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 03:28:11 by mderri            #+#    #+#             */
-/*   Updated: 2019/11/22 03:28:14 by mderri           ###   ########.fr       */
+/*   Updated: 2019/11/22 17:39:56 by slaanani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int		ft_close(t_wolf *w)
 {
 	mlx_destroy_image(w->m.ptr, w->m.d.img_ptr);
 	mlx_destroy_window(w->m.ptr, w->m.win);
-	free_all(w);
 	exit(0);
 }
 

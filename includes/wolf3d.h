@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rtv1.h                                             :+:      :+:    :+:   */
+/*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slaanani <slaanani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 23:59:36 by mderri            #+#    #+#             */
-/*   Updated: 2019/10/10 14:54:01 by slaanani         ###   ########.fr       */
+/*   Updated: 2019/11/22 18:14:09 by slaanani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WOLF_3D
-# define WOLF_3D
+#ifndef WOLF3D_H
+# define WOLF3D_H
 
 # include <mlx.h>
 # include "libft.h"
@@ -26,7 +26,8 @@
 # define ADV ((PI * 60) / 180)
 # define MAX 1e30
 # define MIN 1e-4
-
+# define MAP_HEIGHT 24
+# define MAP_WIDTH 24
 
 typedef struct	s_data
 {
@@ -60,13 +61,6 @@ typedef struct	s_vecteur
 	long double	z;
 }				t_vecteur;
 
-typedef	struct	s_rayon
-{
-	t_vecteur	org;
-	t_vecteur	direct;
-	long double	intensity;
-}				t_rayon;
-
 typedef struct	s_camera
 {
 	t_vecteur	lookat;
@@ -79,14 +73,14 @@ typedef struct	s_camera
 	long double	frame_height;
 }				t_camera;
 
-
 typedef struct	s_wolf
 {
 	t_mlx			m;
-	t_rayon			ray;
+	t_vecteur		ray;
 	t_vecteur		v1;
 	t_camera		cam;
 	t_vecteur		u;
+	char			*name;
 }				t_wolf;
 
 t_vecteur		sum(t_vecteur v1, t_vecteur v2);
@@ -102,7 +96,6 @@ void			put_error(char *str);
 int				rgb(int r, int g, int b);
 t_vecteur		create_v(long double x, long double y, long double z);
 void			free_splited(char **tab);
-void			create_camera(t_rt *r, char **s, int i);
 double			deg_to_rad(double angle);
 t_vecteur		rotatez(t_vecteur vec, double angle);
 t_vecteur		rotatex(t_vecteur vec, double angle);
