@@ -3,38 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaanani <souhaib.laanani@gmail.com>       +#+  +:+       +#+        */
+/*   By: mderri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/13 23:28:38 by slaanani          #+#    #+#             */
-/*   Updated: 2018/10/13 23:28:41 by slaanani         ###   ########.fr       */
+/*   Created: 2018/10/13 23:21:15 by mderri            #+#    #+#             */
+/*   Updated: 2018/10/13 23:21:18 by mderri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strequ(char const *s1, char const *s2)
+int	ft_strequ(char const *s1, char const *s2)
 {
-	char	*str1;
-	char	*str2;
-	size_t	len;
+	const char		*s3;
+	const char		*s4;
+	int				i;
 
-	str1 = (char *)s1;
-	str2 = (char *)s2;
-	if (!str1 || !str2)
+	i = 0;
+	s3 = (const char *)s1;
+	s4 = (const char *)s2;
+	if (!s3 || !s4)
 		return (0);
-	if (ft_strlen(str1) != ft_strlen(str2))
-		return (0);
-	else
+	while (i <= (int)ft_strlen(s3))
 	{
-		len = ft_strlen(str1);
-		while (len--)
-		{
-			if (*str1 != *str2)
-				return (0);
-			str1++;
-			str2++;
-		}
-		return (1);
+		if (s3[i] != s4[i])
+			return (0);
+		i++;
 	}
-	return (0);
+	return (1);
 }

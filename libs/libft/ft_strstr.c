@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaanani <souhaib.laanani@gmail.com>       +#+  +:+       +#+        */
+/*   By: mderri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/11 16:31:14 by slaanani          #+#    #+#             */
-/*   Updated: 2018/10/11 16:34:19 by slaanani         ###   ########.fr       */
+/*   Created: 2018/10/12 23:06:09 by mderri            #+#    #+#             */
+/*   Updated: 2018/10/12 23:06:10 by mderri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,27 @@
 
 char	*ft_strstr(const char *haystack, const char *needle)
 {
-	char	*str;
-	char	*to_find;
+	char	*hay;
+	char	*nee;
+	int		i;
+	int		j;
 
-	str = (char *)haystack;
-	to_find = (char *)needle;
-	if (*to_find == '\0')
-		return (str);
-	while (*str != '\0')
+	i = 0;
+	j = 1;
+	hay = (char *)haystack;
+	nee = (char *)needle;
+	if (nee[0] == '\0')
+		return (hay);
+	while (hay[i] != '\0')
 	{
-		if (*str == *to_find &&
-			ft_memcmp(str, to_find, ft_strlen(to_find)) == 0)
-			return (str);
-		str++;
+		if (hay[i] == nee[0])
+		{
+			while (hay[i + j] == nee[j] && nee[j] != '\0')
+				j++;
+			if (nee[j] == '\0')
+				return (&hay[i]);
+		}
+		i++;
 	}
 	return (NULL);
 }

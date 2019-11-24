@@ -18,16 +18,25 @@
 # include <math.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <stdio.h>
 
 # define ESC 53
 # define UP 126
 # define DOWN 125
+# define LEFT 123
+# define RIGHT 124
 # define PI 3.1415926535
 # define ADV ((PI * 60) / 180)
-# define MAX 1e30
-# define MIN 1e-4
+# define WIDTH 400
+# define HEIGHT 400
 # define MAP_HEIGHT 24
 # define MAP_WIDTH 24
+# define YELLOW 0xebb00e
+# define GREEN 0x8edb09
+# define ZABI 0x02e39c
+# define ZABII 0x03fcf8
+# define ZABIII 0x5e5ef2
+# define ZABIIII 0xe741f2
 
 typedef struct	s_data
 {
@@ -58,29 +67,41 @@ typedef struct	s_vecteur
 {
 	long double	x;
 	long double	y;
-	long double	z;
 }				t_vecteur;
 
-typedef struct	s_camera
+typedef struct	s_ivecteur
 {
-	t_vecteur	lookat;
-	t_vecteur	position;
-	t_vecteur	up;
-	t_vecteur	forward;
-	t_vecteur	left;
-	long double	focal_length;
-	long double	frame_width;
-	long double	frame_height;
-}				t_camera;
+	int	x;
+	int	y;
+}				t_ivecteur;
+
+typedef struct	s_map
+{
+	int	**map;
+	int		x;
+	int 	y;
+}				t_map;
 
 typedef struct	s_wolf
 {
 	t_mlx			m;
 	t_vecteur		ray;
-	t_vecteur		v1;
-	t_camera		cam;
-	t_vecteur		u;
+	t_vecteur		dir;
+	t_vecteur		delta;
+	t_vecteur		plane;
+	t_ivecteur		grid;
+	t_ivecteur		side_d;
+	t_ivecteur		step;
+	t_vecteur		p;
+	int				hit;
+	int				which_s;
+	int				color;
+	double			movespeed;
+	double 			rotspeed;
 	char			*name;
+	t_map			mp;
+	int				nligne;
+	int				ncol;
 }				t_wolf;
 
 t_vecteur		sum(t_vecteur v1, t_vecteur v2);
@@ -101,4 +122,8 @@ t_vecteur		rotatez(t_vecteur vec, double angle);
 t_vecteur		rotatex(t_vecteur vec, double angle);
 t_vecteur		rotatey(t_vecteur vec, double angle);
 t_vecteur		translation(t_vecteur old_pos, t_vecteur tr);
+void			raycaster(t_wolf *w);
+// ----------------------------------------------------------------------
+void			init_nb_ligne_col(int fd, t_wolf *w);
+void			readmap(char *arg, t_wolf *w);
 #endif

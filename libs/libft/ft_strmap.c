@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaanani <souhaib.laanani@gmail.com>       +#+  +:+       +#+        */
+/*   By: mderri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/13 22:36:17 by slaanani          #+#    #+#             */
-/*   Updated: 2018/10/13 22:36:18 by slaanani         ###   ########.fr       */
+/*   Created: 2018/10/13 22:43:59 by mderri            #+#    #+#             */
+/*   Updated: 2018/10/13 22:44:02 by mderri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 char	*ft_strmap(char const *s, char (*f)(char))
 {
-	char	*s2;
-	char	*str;
-	int		i;
+	char	*zf;
+	char	*aux;
+	size_t	i;
 
 	i = 0;
-	if (!s)
+	aux = (char *)s;
+	if (aux == NULL)
 		return (NULL);
-	s2 = (char *)s;
-	str = (char *)malloc((ft_strlen(s2) + 1) * sizeof(char));
-	if (!str)
+	zf = (char *)malloc(sizeof(char) * (ft_strlen(aux) + 1));
+	if (zf == NULL)
 		return (NULL);
-	while (s2[i] != '\0')
+	while (i < ft_strlen(aux))
 	{
-		str[i] = (*f)(s2[i]);
+		zf[i] = (*f)(aux[i]);
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	zf[i] = '\0';
+	return (zf);
 }

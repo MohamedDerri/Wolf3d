@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaanani <sohaib.laanani@gmail.com>        +#+  +:+       +#+        */
+/*   By: mderri <flan@gmail.com>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/17 18:50:45 by slaanani          #+#    #+#             */
-/*   Updated: 2018/10/17 19:22:05 by slaanani         ###   ########.fr       */
+/*   Created: 2018/10/18 23:56:53 by mderri            #+#    #+#             */
+/*   Updated: 2018/10/18 23:56:55 by mderri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
 	t_list	*next;
 
+	if (!alst)
+		return ;
 	while (*alst)
 	{
 		next = (*alst)->next;

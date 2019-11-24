@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaanani <souhaib.laanani@gmail.com>       +#+  +:+       +#+        */
+/*   By: mderri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/13 20:12:01 by slaanani          #+#    #+#             */
-/*   Updated: 2018/10/13 20:12:03 by slaanani         ###   ########.fr       */
+/*   Created: 2018/10/13 20:05:31 by mderri            #+#    #+#             */
+/*   Updated: 2018/10/13 20:05:33 by mderri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,17 @@
 
 void	*ft_memalloc(size_t size)
 {
-	size_t	*tutu;
-	int		i;
+	size_t *zf;
+	size_t i;
 
 	i = 0;
-	tutu = (void *)malloc(size * sizeof(size_t));
-	if (tutu)
+	zf = (size_t *)malloc(sizeof(zf) * size);
+	if (zf == NULL)
+		return (NULL);
+	while (i <= size)
 	{
-		while (size--)
-		{
-			*(tutu++) = 0;
-			i++;
-		}
-		tutu -= i;
-		return (tutu);
+		zf[i] = 0;
+		i++;
 	}
-	return (NULL);
+	return (zf);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaanani <souhaib.laanani@gmail.com>       +#+  +:+       +#+        */
+/*   By: mderri <flan@gmail.com>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/16 00:47:33 by slaanani          #+#    #+#             */
-/*   Updated: 2018/10/16 00:47:34 by slaanani         ###   ########.fr       */
+/*   Created: 2018/10/17 20:52:34 by mderri            #+#    #+#             */
+/*   Updated: 2018/10/17 20:52:36 by mderri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,15 @@
 
 void	ft_putendl(char const *s)
 {
-	ft_putstr(s);
+	int	i;
+
+	if (!s)
+		return ;
+	i = 0;
+	while (s[i] != '\0')
+	{
+		ft_putchar(s[i]);
+		i++;
+	}
 	ft_putchar('\n');
 }

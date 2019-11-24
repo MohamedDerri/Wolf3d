@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaanani <sohaib.laanani@gmail.com>        +#+  +:+       +#+        */
+/*   By: mderri <flan@gmail.com>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/16 22:15:56 by slaanani          #+#    #+#             */
-/*   Updated: 2018/10/16 23:33:02 by slaanani         ###   ########.fr       */
+/*   Created: 2018/10/18 22:31:28 by mderri            #+#    #+#             */
+/*   Updated: 2018/10/18 22:31:31 by mderri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,22 @@
 
 t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	t_list	*new;
+	t_list	*nv_mai;
 
-	new = (t_list *)malloc(sizeof(*new));
-	if (!new)
+	if (!(nv_mai = (t_list *)malloc(sizeof(t_list) * content_size)))
 		return (NULL);
-	if (!content)
+	if (content == NULL)
 	{
-		new->content = NULL;
-		new->content_size = 0;
+		nv_mai->content = NULL;
+		nv_mai->content_size = 0;
 	}
 	else
 	{
-		new->content = (void *)malloc(content_size * sizeof(new->content_size));
-		if (!new->content)
+		if (!(nv_mai->content = (void *)malloc(sizeof(void) * content_size)))
 			return (NULL);
-		ft_memcpy(new->content, content, content_size);
-		new->content_size = content_size;
+		ft_memcpy(nv_mai->content, content, content_size);
+		nv_mai->content_size = content_size;
 	}
-	new->next = NULL;
-	return (new);
+	nv_mai->next = NULL;
+	return (nv_mai);
 }

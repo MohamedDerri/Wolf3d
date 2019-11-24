@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_factorial.c                                     :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaanani <souhaib.laanani@gmail.com>       +#+  +:+       +#+        */
+/*   By: mderri <flan@gmail.com>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/20 03:19:50 by slaanani          #+#    #+#             */
-/*   Updated: 2018/10/20 03:22:14 by slaanani         ###   ########.fr       */
+/*   Created: 2018/10/20 02:52:30 by mderri            #+#    #+#             */
+/*   Updated: 2018/10/20 02:52:32 by mderri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_factorial(int nb)
+#include "libft.h"
+
+void	ft_swap(int *a, int *b)
 {
-	if (nb < 0)
-		return (0);
-	else if (nb == 0 || nb == 1)
-		return (1);
-	else
-		return (nb * ft_factorial(nb - 1));
+	int	t;
+
+	t = *a;
+	*a = *b;
+	*b = t;
 }

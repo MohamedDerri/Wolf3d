@@ -3,74 +3,102 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaanani <souhaib.laanani@gmail.com>       +#+  +:+       +#+        */
+/*   By: mderri <flan@gmail.com>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/14 01:29:31 by slaanani          #+#    #+#             */
-/*   Updated: 2018/10/14 01:29:32 by slaanani         ###   ########.fr       */
+/*   Created: 2018/10/17 22:00:06 by mderri            #+#    #+#             */
+/*   Updated: 2018/10/17 22:00:09 by mderri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		count_words(const char *str, char c)
+static int		ft_count_words(char const *s, char c)
 {
-	int			word;
-	int			number_words;
-	int			i;
+	int v;
+	int i;
+	int cnt_word;
 
-	word = 0;
-	number_words = 0;
 	i = 0;
-	while (str[i] != '\0')
+	v = 0;
+	cnt_word = 0;
+	while (s[i] != '\0')
 	{
-		if (str[i] != c && word == 0)
+		if (s[i] != c && v == 0)
 		{
-			number_words++;
-			word = 1;
+			v = 1;
+			cnt_word++;
 		}
-		else if (str[i] == c)
-		{
-			word = 0;
-		}
-		++i;
+		else if (s[i] == c && v == 1)
+			v = 0;
+		i++;
 	}
-	return (number_words);
+	return (cnt_word);
 }
 
-static int		calculate_length(const char *str, char c)
+static char		**ft_allocation_ligne_colonne(char **str, char const *s, char c)
 {
-	int			i;
+	int	i;
+	int	countcoln;
 
 	i = 0;
-	while (str[i] != '\0' && str[i] != c)
-		++i;
-	return (i);
+	countcoln = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] != c)
+		{
+			countcoln++;
+			if (s[i + 1] == c || s[i + 1] == '\0')
+			{
+				*str = (char *)malloc(sizeof(char) * (countcoln + 1));
+				str++;
+				countcoln = 0;
+			}
+		}
+		i++;
+	}
+	return (str);
+}
+
+static char		**ft_remplissage_tab(char **str, char const *s, char c)
+{
+	int i;
+	int j;
+	int k;
+
+	i = 0;
+	j = 0;
+	k = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] != c)
+		{
+			str[k][j] = s[i];
+			j++;
+			if (s[i + 1] == c || s[i + 1] == '\0')
+			{
+				str[k][j] = '\0';
+				k++;
+				j = 0;
+			}
+		}
+		i++;
+	}
+	str[k] = 0;
+	return (str);
 }
 
 char			**ft_strsplit(char const *s, char c)
 {
-	char	**t;
-	int		nb_word;
-	int		index;
+	char	**str;
+	int		j;
 
 	if (!s)
 		return (NULL);
-	index = 0;
-	nb_word = count_words((const char *)s, c);
-	t = (char **)malloc(sizeof(*t) * (count_words((const char *)s, c) + 1));
-	if (t == NULL)
+	j = ft_count_words(s, c);
+	if (!(str = (char **)malloc(sizeof(char *) * (j + 1))))
 		return (NULL);
-	while (nb_word--)
-	{
-		while (*s == c && *s != '\0')
-			s++;
-		t[index] = ft_strsub((const char *)s, 0,
-			calculate_length((const char *)s, c));
-		if (!t[index])
-			return (NULL);
-		s = s + calculate_length(s, c);
-		index++;
-	}
-	t[index] = NULL;
-	return (t);
+	str = ft_allocation_ligne_colonne(str, s, c);
+	str -= j;
+	str = ft_remplissage_tab(str, s, c);
+	return (str);
 }

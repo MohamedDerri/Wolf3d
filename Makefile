@@ -21,6 +21,7 @@ SRC =	keyhandle.c\
 		vector_operations.c\
 		vector_operations2.c\
 		raycaster.c\
+		readmap.c\
 		wolf3d.c
 
 SRCS = $(addprefix srcs/, $(SRC))

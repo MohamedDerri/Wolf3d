@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaanani <souhaib.laanani@gmail.com>       +#+  +:+       +#+        */
+/*   By: mderri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/11 17:52:51 by slaanani          #+#    #+#             */
-/*   Updated: 2018/10/11 17:52:54 by slaanani         ###   ########.fr       */
+/*   Created: 2018/10/13 01:11:25 by mderri            #+#    #+#             */
+/*   Updated: 2018/10/13 01:11:27 by mderri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 
 int		ft_strcmp(const char *s1, const char *s2)
 {
-	unsigned char	*str1;
-	unsigned char	*str2;
+	const unsigned char *s3;
+	const unsigned char *s4;
+	int					i;
 
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	if (*str1 == '\0' && *str2 == '\0')
-		return (0);
-	while (*str1 == *str2 && *str1 && *str2)
+	i = 0;
+	s3 = (const unsigned char *)s1;
+	s4 = (const unsigned char *)s2;
+	while (s3[i])
 	{
-		str1++;
-		str2++;
+		if (s3[i] != s4[i])
+			return (s3[i] - s4[i]);
+		i++;
 	}
-	return (*str1 - *str2);
+	return (s3[i] - s4[i]);
 }

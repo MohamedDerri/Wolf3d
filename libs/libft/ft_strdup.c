@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaanani <souhaib.laanani@gmail.com>       +#+  +:+       +#+        */
+/*   By: mderri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/10 18:25:28 by slaanani          #+#    #+#             */
-/*   Updated: 2018/10/10 18:25:30 by slaanani         ###   ########.fr       */
+/*   Created: 2018/10/11 21:10:59 by mderri            #+#    #+#             */
+/*   Updated: 2018/10/11 21:11:07 by mderri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,22 @@
 
 char	*ft_strdup(const char *s1)
 {
-	char	*array;
-	size_t	i;
+	char*s2;
+	int	i;
+	int	l;
 
-	array = (char*)malloc((ft_strlen(s1) + 1) * sizeof(char));
-	if (array == NULL)
+	i = 0;
+	l = 0;
+	while (s1[l] != '\0')
+		l++;
+	s2 = (char *)malloc(sizeof(char) * (l + 1));
+	if (s2 == NULL)
 		return (NULL);
-	else
+	while (s1[i] != '\0')
 	{
-		i = 0;
-		while (i < ft_strlen(s1))
-		{
-			array[i] = s1[i];
-			i++;
-		}
-		array[i] = '\0';
+		s2[i] = s1[i];
+		i++;
 	}
-	return (array);
+	s2[i] = '\0';
+	return (s2);
 }

@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaanani <sohaib.laanani@gmail.com>        +#+  +:+       +#+        */
+/*   By: mderri <mderri@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/19 01:18:34 by slaanani          #+#    #+#             */
-/*   Updated: 2018/10/19 01:24:30 by slaanani         ###   ########.fr       */
+/*   Created: 2019/02/10 19:24:49 by mderri            #+#    #+#             */
+/*   Updated: 2019/02/10 19:24:52 by mderri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_abs(int i)
 {
 	if (i < 0)
-		return (-i);
-	return (i);
+		return (i * -1);
+	else
+		return (i);
 }

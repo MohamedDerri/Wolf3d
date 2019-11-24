@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_even.c                                       :+:      :+:    :+:   */
+/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaanani <sohaib.laanani@gmail.com>        +#+  +:+       +#+        */
+/*   By: mderri <flan@gmail.com>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/19 01:30:17 by slaanani          #+#    #+#             */
-/*   Updated: 2018/10/19 01:40:51 by slaanani         ###   ########.fr       */
+/*   Created: 2018/10/20 04:00:49 by mderri            #+#    #+#             */
+/*   Updated: 2018/10/20 04:00:51 by mderri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_is_even(int number)
+#include "libft.h"
+
+int		ft_recursive_factorial(int nb)
 {
-	if (number % 2)
+	if (nb < 0 || nb > 12)
+	{
 		return (0);
-	return (1);
+	}
+	else if (nb == 0)
+	{
+		return (1);
+	}
+	else
+	{
+		return (nb * ft_recursive_factorial(nb - 1));
+	}
 }

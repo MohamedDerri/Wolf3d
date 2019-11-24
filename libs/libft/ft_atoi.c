@@ -3,39 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaanani <souhaib.laanani@gmail.com>       +#+  +:+       +#+        */
+/*   By: mderri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/11 21:36:47 by slaanani          #+#    #+#             */
-/*   Updated: 2018/10/12 01:00:12 by slaanani         ###   ########.fr       */
+/*   Created: 2018/10/13 16:20:26 by mderri            #+#    #+#             */
+/*   Updated: 2018/10/13 16:20:29 by mderri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+static int		spacesdmt(char *str)
 {
-	unsigned int	res;
-	int				sign;
-	int				i;
+	int i;
 
-	res = 0;
-	sign = 0;
 	i = 0;
-	while ((str[i] == ' ') || (str[i] == '\t') || (str[i] == '\n') ||
-		(str[i] == '\v') || (str[i] == '\r') || (str[i] == '\f'))
-		i++;
-	if (str[i] == '-')
-		sign = 1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i] && (str[i] >= '0') && (str[i] <= '9'))
+	while (str[i] == ' ' || str[i] == '\f' || str[i] == '\v'
+		|| str[i] == '\t' || str[i] == '\r' || str[i] == '\n')
 	{
-		res = res * 10;
-		res += (int)str[i] - '0';
 		i++;
 	}
-	if (sign == 1)
-		return ((int)-res);
-	else
-		return (res);
+	return (i);
+}
+
+int				ft_atoi(const char *str)
+{
+	int r;
+	int s;
+	int	i;
+
+	r = 0;
+	i = spacesdmt((char *)str);
+	s = 1;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+		{
+			s = -1;
+		}
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		r = r * 10 + (int)str[i] - '0';
+		i++;
+	}
+	return (r * s);
 }

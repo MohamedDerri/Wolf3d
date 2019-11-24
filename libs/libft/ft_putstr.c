@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaanani <souhaib.laanani@gmail.com>       +#+  +:+       +#+        */
+/*   By: mderri <flan@gmail.com>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/16 00:40:50 by slaanani          #+#    #+#             */
-/*   Updated: 2018/10/16 00:40:51 by slaanani         ###   ########.fr       */
+/*   Created: 2018/10/17 20:20:06 by mderri            #+#    #+#             */
+/*   Updated: 2018/10/17 20:20:08 by mderri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 void	ft_putstr(char const *s)
 {
-	char	*str;
-	int		i;
+	int	i;
 
-	i = 0;
 	if (!s)
 		return ;
-	str = (char *)s;
-	while (str[i])
-		ft_putchar(str[i++]);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		ft_putchar(s[i]);
+		i++;
+	}
 }
