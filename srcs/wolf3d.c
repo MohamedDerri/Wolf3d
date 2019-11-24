@@ -139,18 +139,18 @@ int		main(int argc, char **argv)
 	w.dir.y = 0;
 	w.plane.x = 0;
 	w.plane.y = 0.66;
-	w.p.x = 12;
+	w.p.x = 19;
 	w.p.y = 12;
-	w.movespeed = 0.3;
-	w.rotspeed = 3;
+	w.movespeed = 30;
+	w.rotspeed = 100;
 	if (argc != 2)
 	{
 		ft_putstr("Usage : ./wolf3d labyrinthe\n");
 		exit(0);
 	}
 	readmap(argv[1], &w);
-	w.m.h = 500;
-	w.m.w= 500;
+	w.m.h = 1000;
+	w.m.w= 1000;
 	w.name = ft_strdup("WOLF3D - mderri && slaanani");
 	w.m.ptr = mlx_init();
 	w.m.win = mlx_new_window(w.m.ptr,w.m.w , w.m.h, w.name);

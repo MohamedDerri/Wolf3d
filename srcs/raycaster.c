@@ -42,7 +42,7 @@ void       raycaster(t_wolf *w)
 			w->step.x = 1;
 			w->side_d.x = (w->mp.x + 1 - w->p.x) * w->delta.x;
 		}
-		if (w->ray.x < 0)
+		if (w->ray.y < 0)
 		{
 			w->step.y = -1;
 			w->side_d.y = (w->p.y - w->mp.y) * w->delta.y;
@@ -71,10 +71,12 @@ void       raycaster(t_wolf *w)
 				w->hit = 1;
 		}
 		if (w->which_s == 0)
-			h_factor = (w->mp.x - w->p.x + ((1 - w->step.x) / 2) / w->ray.x);
+			h_factor = (w->mp.x - w->p.x + (1 - w->step.x) / 2) / w->ray.x + 5;
 		else
-			h_factor = (w->mp.y - w->p.y + ((1 - w->step.y) / 2) / w->ray.y);
+			h_factor = (w->mp.y - w->p.y + (1 - w->step.y) / 2) / w->ray.y + 5;
+		printf("h_factor = %f\n", h_factor);
 		z_wall = (int)(w->m.h / h_factor);
+		printf("z_wall = %d\n", z_wall);
 		min_h = (-z_wall / 2) + w->m.h / 2;
 		max_h = (z_wall / 2) + w->m.h / 2;
 		if (min_h < 0)
@@ -95,7 +97,7 @@ void       raycaster(t_wolf *w)
 			w->color = ZABIIII;
 		// if (w->which_s == 1)
 		// 	w->color = w->color / 2;
-        printf("min_h = %d\n", min_h);
+        printf("min_h = %d && max_h = %d\n", min_h, max_h);
 		y = min_h;
 		while (y <= max_h)
 		{
