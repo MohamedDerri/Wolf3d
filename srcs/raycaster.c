@@ -25,7 +25,7 @@ void       raycaster(t_wolf *w)
 
 	while (x < w->m.w) // boucler sur des pixels colonnes
 	{
-		newx = 2  * y / (long double)MAP_WIDTH - 1; // creation d'un repere (-1,1) / (-1,1)
+		newx = 2  * x / (long double)MAP_WIDTH - 1; // creation d'un repere (-1,1) / (-1,1)
 		w->ray.x = w->dir.x + w->plane.x * newx;
 		w->ray.y = w->dir.y + w->plane.y * newx;
 		w->mp.x = (int)w->p.x;
